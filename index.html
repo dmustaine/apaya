@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Valentine 💘</title>
+<title>Happy Valentine 💖</title>
 
 <style>
 body {
@@ -29,19 +29,6 @@ body {
     z-index: 2;
 }
 
-.heart {
-    position: fixed;
-    top: -10px;
-    color: white;
-    animation: fall linear infinite;
-}
-
-@keyframes fall {
-    to {
-        transform: translateY(110vh);
-    }
-}
-
 button {
     margin-top: 20px;
     padding: 10px 20px;
@@ -52,6 +39,18 @@ button {
     font-size: 18px;
     cursor: pointer;
 }
+
+.heart {
+    position: fixed;
+    top: -10px;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh);
+    }
+}
 </style>
 </head>
 
@@ -59,22 +58,14 @@ button {
 
 <div class="card">
     <h1>Happy Valentine 💖</h1>
-    <p>Untuk Prof. AL</p>
-    <p>Aku harap kamu suka 💌</p>
-    <button onclick="playMusic()">Putar Musik 🎵</button>
+    <p>My honey bunny sweetie</p>
+    <p>ILYSM ❤️</p>
+    <button onclick="alert('Semoga harimu penuh cinta 💘')">
+        Klik Aku 💌
+    </button>
 </div>
 
-<!-- GANTI link lagu di bawah -->
-<audio id="music" controls loop>
-    <source src="ohlove.mp3" type="audio/mpeg">
-</audio>
-
 <script>
-// Musik
-function playMusic() {
-    document.getElementById("music").play();
-}
-
 // Hujan hati
 for (let i = 0; i < 30; i++) {
     let heart = document.createElement("div");
