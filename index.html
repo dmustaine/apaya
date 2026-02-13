@@ -9,46 +9,47 @@
 body {
     margin: 0;
     padding: 0;
-    background: linear-gradient(to right, #ff758c, #ff7eb3);
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
     font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
     text-align: center;
     color: white;
+    overflow: hidden;
 }
 
-.card {
-    background: rgba(255,255,255,0.15);
-    padding: 40px;
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 0 30px rgba(255,255,255,0.3);
-    z-index: 2;
+.container {
+    margin-top: 80px;
 }
 
 button {
-    margin-top: 20px;
-    padding: 10px 20px;
+    margin: 10px;
+    padding: 12px 20px;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
     background: white;
     color: #ff4d6d;
-    font-size: 18px;
-    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+.hidden {
+    display: none;
 }
 
 .heart {
     position: fixed;
-    top: -10px;
-    animation: fall linear infinite;
+    font-size: 24px;
+    animation: float 2s linear forwards;
 }
 
-@keyframes fall {
+@keyframes float {
     to {
-        transform: translateY(110vh);
+        transform: translateY(-200px);
+        opacity: 0;
     }
 }
 </style>
@@ -56,25 +57,44 @@ button {
 
 <body>
 
-<div class="card">
+<div class="container">
     <h1>Happy Valentine 💖</h1>
-    <p>My honey bunny sweetie</p>
-    <p>ILYSM ❤️</p>
-    <button onclick="alert('Semoga harimu penuh cinta 💘')">
-        Klik Aku 💌
-    </button>
+    <p>Untuk Prof. AL</p>
+    <h2>Ilysm ❤️</h2>
+
+    <button onclick="openLetter()">Buka Surat 💌</button>
+    <button onclick="spawnHearts()">Pencet Hati 💖</button>
+    <button onclick="secretMessage()">Tombol Rahasia 👀</button>
+
+    <div id="letter" class="hidden">
+        <p style="margin-top:20px; font-size:18px;">
+            beli bakwan naik motor, you're the one im looking for 💘
+        </p>
+    </div>
 </div>
 
 <script>
-// Hujan hati
-for (let i = 0; i < 30; i++) {
-    let heart = document.createElement("div");
-    heart.innerHTML = "❤️";
-    heart.classList.add("heart");
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (3 + Math.random() * 5) + "s";
-    heart.style.fontSize = (15 + Math.random() * 30) + "px";
-    document.body.appendChild(heart);
+function openLetter() {
+    document.getElementById("letter").classList.toggle("hidden");
+}
+
+function spawnHearts() {
+    for (let i = 0; i < 10; i++) {
+        let heart = document.createElement("div");
+        heart.innerHTML = "💖";
+        heart.classList.add("heart");
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.bottom = "0px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 2000);
+    }
+}
+
+function secretMessage() {
+    alert("will you be my valentine?😳💘");
 }
 </script>
 
